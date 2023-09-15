@@ -192,3 +192,6 @@ Setting a thermostat temperature is typically simple when there is one person, b
 
 ### Limitations
 Some users may prefer money saving and would prefer the ac to be either too hot or too cold for peoples preferences (depending on the external temperature) in order to save on the electricity bill. This agent does not allow for this behavior. Additionally, the ac agent does not take into account the time of day. For example, it may be more comfortable to have the ac set to a lower temperature at night than during the day.
+
+## Video Presentation
+![Video Presentation](assets/cs3642-assignment-one-video-presentation.mp4)
