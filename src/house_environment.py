@@ -13,7 +13,7 @@ class HouseEnvironment:
         self._residents_away = {}
         self._external_temp_fahrenheit = 80.0
         self._thermostat_temp_fahrenheit = 80.0
-        self._time = 0
+        self._time = 1
 
     # Tell the environment to update itself. In the GUI, the user clicks a button to
     # progress the time by 1 hour, and this method is called when that happens.

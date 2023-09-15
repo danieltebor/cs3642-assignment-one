@@ -23,7 +23,7 @@ if the people currently in the house have changed.
 ```python
 class ACAgent:
     def __init__(self, environment: HouseEnvironment):
-        self._prev_environment_state = environment
+        self._prev_environment_state = copy.deepcopy(environment)
         environment.thermostat_temp_fahrenheit = self._calculate_thermostat_temp(environment.residents_home)
 
     # Move agent out of the idle state and evaluate new environment state.
@@ -60,7 +60,7 @@ class HouseEnvironment:
         self._residents_away = {}
         self._external_temp_fahrenheit = 80.0
         self._thermostat_temp_fahrenheit = 80.0
-        self._time = 0
+        self._time = 1
 
     # Tell the environment to update itself. In the GUI, the user clicks a button to
     # progress the time by 1 hour, and this method is called when that happens.
@@ -139,30 +139,27 @@ root = tk.Tk()
 def dict_to_str(dict: dict[str, float]):
     return ', '.join(f'{k} ({v}F)' for k, v in dict.items())
 
-residents_home_str = tk.StringVar()
-residents_away_str = tk.StringVar()
-external_temp_str = tk.StringVar()
-thermostat_temp_str = tk.StringVar()
-time_str = tk.StringVar()
+residents_home_str = tk.StringVar(value=f'Residents Home: {dict_to_str(house_environment.residents_home)}')
+residents_away_str = tk.StringVar(value=f'Residents Away: {dict_to_str(house_environment.residents_away)}')
+external_temp_str = tk.StringVar(value='External Temp: ' + str(format(house_environment.external_temp_fahrenheit, '.1f')) + 'F')
+thermostat_temp_str = tk.StringVar(value=f'Thermostat Temp: {int(house_environment.thermostat_temp_fahrenheit + 0.5)}F')
+time_str = tk.StringVar(value=f'Time: {house_environment.time}PM')
 
 def update_environment():
     house_environment.update()
     ac_agent.inform_new_environment_state(house_environment)
 
     # Update GUI vars.
-    residents_home_str.set('Residents Home: ' + str(dict_to_str(house_environment.residents_home)))
-    residents_away_str.set('Residents Away: ' + str(dict_to_str(house_environment.residents_away)))
+    residents_home_str.set(f'Residents Home: {dict_to_str(house_environment.residents_home)}')
+    residents_away_str.set(f'Residents Away: {dict_to_str(house_environment.residents_away)}')
     external_temp_str.set('External Temp: ' + str(format(house_environment.external_temp_fahrenheit, '.1f')) + 'F')
     # Round thermostat temp to nearest integer since thermostat temperature setting is an integer on most models.
-    thermostat_temp_str.set('Thermostat Temp: ' + str(int(house_environment.thermostat_temp_fahrenheit + 0.5)) + 'F')
-    time_str.set('Time: ' + str(house_environment.time) + 'PM')
+    thermostat_temp_str.set(f'Thermostat Temp: {int(house_environment.thermostat_temp_fahrenheit + 0.5)}F')
+    time_str.set(f'Time: {house_environment.time}PM')
 
     # Exit once time reaches 12AM.
     if house_environment.time == 12:
         root.destroy()
-
-# Run once to populate GUI vars.
-update_environment()
 
 residents_home_label = tk.Label(root, textvariable=residents_home_str)
 residents_away_label = tk.Label(root, textvariable=residents_away_str)

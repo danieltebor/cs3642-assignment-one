@@ -2,6 +2,7 @@ import copy
 
 from house_environment import HouseEnvironment
 
+
 # This class represents the automatic air conditioning agent.
 # The agent doesn't do anything until it is informed of a new environment state
 # by calling the inform_new_environment_state method.
@@ -9,7 +10,7 @@ from house_environment import HouseEnvironment
 # if the people currently in the house have changed.
 class ACAgent:
     def __init__(self, environment: HouseEnvironment):
-        self._prev_environment_state = environment
+        self._prev_environment_state = copy.deepcopy(environment)
         environment.thermostat_temp_fahrenheit = self._calculate_thermostat_temp(environment.residents_home)
 
     # Move agent out of the idle state and evaluate new environment state.
