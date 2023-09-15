@@ -184,14 +184,14 @@ root.resizable(False, False)
 # Start GUI.
 root.mainloop()
 ```
-The following is an example of the gui running. It displays the people currently home, the people currently out, the external temperature, the thermostat temperature, and the current time. Additionally, the prefered temperature of each resident is shown next to their name.<br></br>
+The following is an example of the GUI running. It displays the people currently home, the people currently out, the external temperature, the thermostat temperature, and the current time. Additionally, the preferred temperature of each resident is shown next to their name.<br></br>
 ![GUI](assets/gui_running_example.png)
 
 ## Tasks Agent Solves
-Setting a thermostat temperature is typically simple when there is one person, but when there are multiple people in a space it can be difficult to find a temperature that everyone is comfortable with. The automatic AC agent solves this problem by setting the thermostat temperature to the average of the preferred temperatures of the people currently in the space. This way, everyone is comfortable with the temperature as is reasonably possible. Additionally, the agent saves money by setting the thermostat temperature to the external temperature when no one is home, which is convenient since it easy to forget to turn off the AC when leaving the house.
+Setting a thermostat temperature is typically simple when there is one person, but when there are multiple people in a space it can be difficult to find a temperature that everyone is comfortable with. The automatic AC agent solves this problem by setting the thermostat temperature to the average of the preferred temperatures of the people currently in the space. This way, everyone is comfortable with the temperature as is reasonably possible. Additionally, the agent saves money by setting the thermostat temperature to the external temperature when no one is home, which is convenient since it is easy to forget to turn off the AC when leaving the house.
 
 ### Limitations
-Some users may prefer money saving and would prefer the ac to be either too hot or too cold for peoples preferences (depending on the external temperature) in order to save on the electricity bill. This agent does not allow for this behavior. Additionally, the ac agent does not take into account the time of day. For example, it may be more comfortable to have the ac set to a lower temperature at night than during the day.
+Some users may prefer money-saving and would prefer the AC to be either too hot or too cold for people's preferences (depending on the external temperature) in order to save on the electricity bill. This agent does not allow for this behavior. Additionally, the AC agent does not take into account the time of day. For example, it may be more comfortable to have the AC set to a lower temperature at night than during the day.
 
 ## Video Presentation
-![Video Presentation](assets/cs3642-assignment-one-video-presentation.mp4)
+The presentation is located in ![assets](assets/)
